@@ -1,0 +1,61 @@
+.home-section {
+  flex-direction: column;
+  text-align: left;
+  animation: fadeInUp 1s ease-out;
+}
+
+.home-content {
+  animation: fadeInUp 1s ease-out;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.job-title {
+  color: var(--light-text);
+  font-size: 2rem;
+}
+
+.job-title::after {
+  display: none;
+}
+
+.description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 2rem 0;
+  line-height: 1.8;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.cta-button:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 1rem;
+  }
+
+  .job-title {
+    font-size: 1.5rem;
+  }
+}
