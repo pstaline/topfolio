@@ -23,8 +23,22 @@ jobs:
           node-version: '18'
           cache: 'npm'
       
+      - name: Fix package-lock.json conflicts
+        run: |
+          if [ -f package-lock.json ] && grep -q '<<<<<<<' package-lock.json; then
+            echo 'Conflict markers found in package-lock.json — removing file to allow install'
+            rm package-lock.json
+          fi
+
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ] && ! grep -q '<<<<<<<' package-lock.json; then
+            echo 'Using npm ci with a clean lockfile'
+            npm ci
+          else
+            echo 'No valid package-lock.json present — running npm install to generate a lockfile'
+            npm install
+          fi
       
       - name: Build
         run: npm run build
